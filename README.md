@@ -65,25 +65,25 @@ I might add this later. For now, I want to see how far we can get using Next.js 
 
 If you have some suggestions, feel free to create an issue.
 
-## Running Locally
+## Taxonomy:
+Run Postgres docker container
+- `docker run --name svelte-dash-db -p 5432:5432 -e POSTGRES_PASSWORD=p0stgr3s -d postgres`
+- Note: need to use: `host.docker.internal` as host when referencing container
+- Connection String: `postgresql://postgres:p0stgr3s@host.docker.internal:5432/taxonomy-db1`
 
-1. Install dependencies using pnpm:
+Setup Directory
+`pnpm i`
 
-```sh
-pnpm install
-```
+Prisma Init  
+-> `npx prisma generate`  
+-> `npx prisma migrate dev --preview-feature`
 
-2. Copy `.env.example` to `.env.local` and update the variables.
+Create and Configure environment variables  
+` cp .env.example .env`
 
-```sh
-cp .env.example .env.local
-```
-
-3. Start the development server:
-
-```sh
-pnpm dev
-```
+Run App in dev move  
+`pnpm dev`  
+- Note: may change port in package.json if running in container
 
 ## License
 
